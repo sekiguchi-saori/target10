@@ -567,6 +567,8 @@ to   { transform: scale(1); }
 ボタンエリア
 ===================================================== */
 .btn-area {
+  position: relative;
+  z-index: 2;
 padding: var(--sp-s) 30px;
 display: flex;
 gap: var(--sp-s);
@@ -643,6 +645,8 @@ box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
 進捗ドット
 ===================================================== */
 .dots {
+position: relative;
+z-index: 2;
 display: flex; justify-content: center; gap: 8px;
 padding: var(--sp-xs) 0;
 }
@@ -657,6 +661,8 @@ transition: background 0.3s, box-shadow 0.3s;
 @keyframes dotPulse { to { box-shadow: 0 0 16px var(--gold), 0 0 32px rgba(245,197,24,0.6); } }
 
 .hint {
+  position: relative;
+  z-index: 2;
 text-align: center;
 font-size: clamp(10px,2.5vw,11px);
 color: rgba(245,197,24,0.22);
@@ -780,10 +786,10 @@ border-radius: 2px;
 position: relative;
 width: 100%;
 /* 画像の縦横比（1165×975）に合わせて下部だけ見せる高さ */
-height: clamp(100px, 28vw, 160px);
-margin-top: -6px;
+height: clamp(120px, 28vw, 160px);
+margin-top: -160px;
 pointer-events: none;
-overflow: hidden;
+overflow: visible;
 }
 
 .coin-mountain-img {
