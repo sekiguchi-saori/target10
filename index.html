@@ -32,8 +32,8 @@
 *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
 
 body {
-font-family: var(–f-ui);
-background: var(–bg);
+font-family: var(--f-ui);
+background: var(--bg);
 min-height: 100svh;
 display: flex;
 flex-direction: column;
@@ -69,11 +69,11 @@ overflow: hidden;
 position: absolute;
 border-radius: 50%;
 background: #fff;
-animation: twinkle var(–d) ease-in-out infinite var(–delay) alternate;
+animation: twinkle var(--d) ease-in-out infinite var(--delay) alternate;
 }
 @keyframes twinkle {
 from { opacity: 0.1; transform: scale(0.5); }
-to   { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 6px #fff, 0 0 12px var(–gold); }
+to   { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 6px #fff, 0 0 12px var(--gold); }
 }
 
 /* =====================================================
@@ -82,10 +82,10 @@ to   { opacity: 0.9; transform: scale(1.2); box-shadow: 0 0 6px #fff, 0 0 12px v
 .wrap {
 position: relative; z-index: 1;
 width: min(480px, 100%);
-padding: var(–sp-xs) var(–sp-s) var(–sp-l);
+padding: var(--sp-xs) var(--sp-s) var(--sp-l);
 display: flex;
 flex-direction: column;
-gap: var(–sp-s);
+gap: var(--sp-s);
 min-height: 100svh;
 }
 
@@ -98,7 +98,7 @@ background: linear-gradient(180deg, #3d0000 0%, #1a0000 100%);
 border-radius: 10px;
 padding: 4px;
 box-shadow:
-0 0 0 2px var(–gold-d),
+0 0 0 2px var(--gold-d),
 0 0 20px rgba(245,197,24,0.4),
 0 0 60px rgba(180,0,0,0.35),
 inset 0 2px 4px rgba(255,255,255,0.05);
@@ -115,29 +115,29 @@ gap: 2px;
 width: clamp(6px,1.5vw,9px);
 height: clamp(6px,1.5vw,9px);
 border-radius: 50%;
-background: var(–gold);
-box-shadow: 0 0 4px var(–gold), 0 0 8px var(–gold-l);
+background: var(--gold);
+box-shadow: 0 0 4px var(--gold), 0 0 8px var(--gold-l);
 animation: bulbFlash 0.5s steps(1) infinite alternate;
 flex-shrink: 0;
 }
 .bulb:nth-child(odd)  { animation-delay: 0s; }
 .bulb:nth-child(even) { animation-delay: 0.25s; }
 @keyframes bulbFlash {
-from { background: var(–gold);   box-shadow: 0 0 6px var(–gold), 0 0 14px var(–gold-l); }
-to   { background: var(–gold-d); box-shadow: none; }
+from { background: var(--gold);   box-shadow: 0 0 6px var(--gold), 0 0 14px var(--gold-l); }
+to   { background: var(--gold-d); box-shadow: none; }
 }
 
 .sign-inner {
-padding: var(–sp-xs) 0;
+padding: var(--sp-xs) 0;
 }
 
 .title {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(32px, 9.5vw, 50px);
 text-align: center;
 letter-spacing: 0.06em;
 line-height: 1;
-color: var(–gold);
+color: var(--gold);
 /* 3D押し出し */
 text-shadow:
 0  1px 0 #aa7700,
@@ -156,21 +156,21 @@ animation: titleGlow 2s ease-in-out infinite alternate;
 from { text-shadow: 0 1px 0 #aa7700, 0 2px 0 #996600, 0 3px 0 #885500, 0 4px 0 #774400, 0 5px 0 #663300, 0 6px 8px rgba(0,0,0,0.6), 0 0 10px rgba(255,220,50,0.8), 0 0 30px rgba(255,180,0,0.5), 0 0 60px rgba(255,140,0,0.3); }
 to   { text-shadow: 0 1px 0 #aa7700, 0 2px 0 #996600, 0 3px 0 #885500, 0 4px 0 #774400, 0 5px 0 #663300, 0 6px 8px rgba(0,0,0,0.6), 0 0 20px rgba(255,240,80,1),   0 0 50px rgba(255,200,0,0.8), 0 0 100px rgba(255,160,0,0.5); }
 }
-.title .ten { color: var(–neon-y); }
+.title .ten { color: var(--neon-y); }
 
 /* =====================================================
 ステータスバー
 ===================================================== */
 .status {
 display: flex;
-gap: var(–sp-xs);
+gap: var(--sp-xs);
 }
 .stat {
 flex: 1;
 background: linear-gradient(180deg, rgba(40,0,0,0.9) 0%, rgba(20,0,0,0.95) 100%);
-border: 1px solid var(–gold-m);
+border: 1px solid var(--gold-m);
 border-radius: 6px;
-padding: var(–sp-xs) var(–sp-xs);
+padding: var(--sp-xs) var(--sp-xs);
 text-align: center;
 box-shadow: inset 0 1px 3px rgba(0,0,0,0.5), 0 0 8px rgba(245,197,24,0.1);
 }
@@ -180,15 +180,15 @@ color: rgba(245,197,24,0.45);
 letter-spacing: 0.12em;
 }
 .stat-val {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(17px,4.5vw,22px);
-color: var(–gold);
+color: var(--gold);
 line-height: 1.1;
 text-shadow: 0 0 8px rgba(245,197,24,0.6);
 }
 .stat-val.danger {
-color: var(–red-b);
-text-shadow: 0 0 12px var(–red-b);
+color: var(--red-b);
+text-shadow: 0 0 12px var(--red-b);
 animation: timeBlink 0.4s step-end infinite alternate;
 }
 @keyframes timeBlink { to { opacity: 0.3; } }
@@ -203,9 +203,9 @@ border-radius: 14px;
 overflow: hidden;
 /* 外枠：多重ボーダー */
 box-shadow:
-0 0 0 2px var(–gold),
-0 0 0 4px var(–gold-d),
-0 0 0 6px var(–gold-m),
+0 0 0 2px var(--gold),
+0 0 0 4px var(--gold-d),
+0 0 0 6px var(--gold-m),
 0 0 30px rgba(245,197,24,0.35),
 0 0 80px rgba(180,0,0,0.25),
 inset 0 0 40px rgba(0,0,0,0.7);
@@ -221,7 +221,7 @@ flex-direction: column;
 align-items: center;
 justify-content: space-around;
 gap: 4px;
-padding: var(–sp-s) 0;
+padding: var(--sp-s) 0;
 z-index: 3;
 pointer-events: none;
 }
@@ -229,13 +229,13 @@ pointer-events: none;
 .lightning.right { right: 4px; }
 .bolt {
 font-size: 14px;
-color: var(–neon-b);
-text-shadow: 0 0 8px var(–neon-b), 0 0 20px var(–neon-b);
+color: var(--neon-b);
+text-shadow: 0 0 8px var(--neon-b), 0 0 20px var(--neon-b);
 animation: boltFlash 0.8s ease-in-out infinite alternate;
 }
 .lightning.right .bolt {
-color: var(–neon-p);
-text-shadow: 0 0 8px var(–neon-p), 0 0 20px var(–neon-p);
+color: var(--neon-p);
+text-shadow: 0 0 8px var(--neon-p), 0 0 20px var(--neon-p);
 animation-delay: 0.4s;
 }
 @keyframes boltFlash {
@@ -248,23 +248,23 @@ to   { opacity: 0.3; transform: scaleY(0.7); }
 ===================================================== */
 .reel-section {
 position: relative;
-padding: var(–sp-m) 30px var(–sp-s);
+padding: var(--sp-m) 30px var(--sp-s);
 background: linear-gradient(180deg, #3a0010 0%, #1e0008 100%);
-border-bottom: 3px solid var(–gold-d);
+border-bottom: 3px solid var(--gold-d);
 }
 
 /* 上部コイン装飾 */
 .coin-deco {
 display: flex;
 justify-content: center;
-gap: var(–sp-xs);
-margin-bottom: var(–sp-s);
+gap: var(--sp-xs);
+margin-bottom: var(--sp-s);
 }
 .deco-coin {
 width: clamp(18px,5vw,26px);
 height: clamp(18px,5vw,26px);
 border-radius: 50%;
-background: radial-gradient(circle at 35% 30%, var(–gold-l), var(–gold), #8a6000);
+background: radial-gradient(circle at 35% 30%, var(--gold-l), var(--gold), #8a6000);
 border: 2px solid rgba(255,255,255,0.3);
 box-shadow: 0 2px 6px rgba(0,0,0,0.5), 0 0 8px rgba(245,197,24,0.4);
 animation: coinBob 1.5s ease-in-out infinite alternate;
@@ -288,7 +288,7 @@ to   { transform: translateY(-4px) rotate(5deg); }
 .reels {
 display: flex;
 justify-content: center;
-gap: var(–sp-s);
+gap: var(--sp-s);
 }
 
 /* スロットリール */
@@ -302,8 +302,8 @@ cursor: pointer;
 -webkit-tap-highlight-color: transparent;
 /* リール筐体 */
 box-shadow:
-0 0 0 2px var(–gold),
-0 0 0 4px var(–gold-d),
+0 0 0 2px var(--gold),
+0 0 0 4px var(--gold-d),
 inset 0 4px 12px rgba(0,0,0,0.3),
 inset 0 -4px 12px rgba(0,0,0,0.2),
 0 4px 12px rgba(0,0,0,0.6),
@@ -343,7 +343,7 @@ border-radius: 0 0 8px 8px;
 .reel-sub {
 position: absolute;
 font-size: clamp(7px,1.8vw,9px);
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 letter-spacing: 0.05em;
 color: rgba(0,0,0,0.25);
 z-index: 1;
@@ -352,7 +352,7 @@ z-index: 1;
 .reel-sub.bottom { bottom: 8px; }
 
 .reel-num {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(40px,11vw,54px);
 color: #111;
 text-shadow: 2px 2px 0 rgba(0,0,0,0.12);
@@ -378,14 +378,14 @@ pointer-events: none;
 /* ホバー・状態 */
 .reel:hover:not(.used) {
 box-shadow:
-0 0 0 2px var(–neon-b),
+0 0 0 2px var(--neon-b),
 0 0 0 4px rgba(0,212,255,0.3),
 0 0 20px rgba(0,212,255,0.4),
 inset 0 4px 12px rgba(0,0,0,0.3);
 }
 .reel.selected {
 box-shadow:
-0 0 0 2px var(–neon-b),
+0 0 0 2px var(--neon-b),
 0 0 0 4px rgba(0,212,255,0.4),
 0 0 30px rgba(0,212,255,0.7),
 0 0 60px rgba(0,212,255,0.3),
@@ -393,8 +393,8 @@ inset 0 4px 12px rgba(0,0,0,0.3);
 animation: selectedPulse 0.7s ease-in-out infinite alternate;
 }
 @keyframes selectedPulse {
-from { box-shadow: 0 0 0 2px var(–neon-b), 0 0 0 4px rgba(0,212,255,0.4), 0 0 20px rgba(0,212,255,0.5), inset 0 4px 12px rgba(0,0,0,0.3); }
-to   { box-shadow: 0 0 0 2px var(–neon-b), 0 0 0 4px rgba(0,212,255,0.6), 0 0 40px rgba(0,212,255,0.8), 0 0 80px rgba(0,212,255,0.3), inset 0 4px 12px rgba(0,0,0,0.3); }
+from { box-shadow: 0 0 0 2px var(--neon-b), 0 0 0 4px rgba(0,212,255,0.4), 0 0 20px rgba(0,212,255,0.5), inset 0 4px 12px rgba(0,0,0,0.3); }
+to   { box-shadow: 0 0 0 2px var(--neon-b), 0 0 0 4px rgba(0,212,255,0.6), 0 0 40px rgba(0,212,255,0.8), 0 0 80px rgba(0,212,255,0.3), inset 0 4px 12px rgba(0,0,0,0.3); }
 }
 .reel.selected .reel-track { background: linear-gradient(180deg, #c0e8f0 0%, #e8f8ff 30%, #ffffff 50%, #e0f5ff 70%, #b8e0f0 100%); }
 
@@ -407,7 +407,7 @@ box-shadow: 0 0 0 2px rgba(245,197,24,0.2), 0 0 0 3px rgba(245,197,24,0.1), inse
 /* スピンアニメ */
 @keyframes reelSpin {
 0%   { transform: translateY(-150%) scaleY(1.2); opacity: 0; }
-50%  { transform: translateY(6%);  scaleY(0.95); opacity: 1; }
+50%  { transform: translateY(6%); scaleY:(0.95); opacity: 1; }
 70%  { transform: translateY(-3%); }
 85%  { transform: translateY(2%); }
 100% { transform: translateY(0%) scaleY(1); opacity: 1; }
@@ -419,13 +419,13 @@ box-shadow: 0 0 0 2px rgba(245,197,24,0.2), 0 0 0 3px rgba(245,197,24,0.1), inse
 display: flex;
 justify-content: space-between;
 align-items: center;
-padding: var(–sp-xs) 30px;
+padding: var(--sp-xs) 30px;
 margin-top: 4px;
 }
 .arr {
 font-size: clamp(14px,4vw,18px);
-color: var(–red-b);
-text-shadow: 0 0 8px var(–red-b), 0 0 20px rgba(255,32,32,0.4);
+color: var(--red-b);
+text-shadow: 0 0 8px var(--red-b), 0 0 20px rgba(255,32,32,0.4);
 animation: arrPulse 0.8s ease-in-out infinite alternate;
 }
 .arr.right { transform: rotate(180deg); }
@@ -438,7 +438,7 @@ to   { opacity: 0.4; }
 答え入力エリア
 ===================================================== */
 .answer-section {
-padding: var(–sp-s) 30px;
+padding: var(--sp-s) 30px;
 background: rgba(0,0,0,0.5);
 }
 
@@ -446,7 +446,7 @@ background: rgba(0,0,0,0.5);
 display: flex;
 align-items: center;
 justify-content: center;
-gap: var(–sp-xs);
+gap: var(--sp-xs);
 }
 
 /* 答えスロット（ジュエル枠） */
@@ -461,8 +461,8 @@ cursor: pointer;
 -webkit-tap-highlight-color: transparent;
 /* 宝石枠ボーダー */
 box-shadow:
-0 0 0 1px var(–gold-d),
-0 0 0 2px var(–gold-m),
+0 0 0 1px var(--gold-d),
+0 0 0 2px var(--gold-m),
 0 0 0 3px rgba(245,197,24,0.2),
 inset 0 2px 8px rgba(0,0,0,0.7),
 inset 0 -1px 3px rgba(245,197,24,0.1);
@@ -483,9 +483,9 @@ pointer-events: none;
 }
 
 .ans-num {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(22px,6vw,30px);
-color: var(–gold);
+color: var(--gold);
 text-shadow:
 0 0 10px rgba(245,197,24,0.9),
 0 0 25px rgba(245,197,24,0.5);
@@ -496,15 +496,15 @@ user-select: none;
 
 .ans.highlight {
 box-shadow:
-0 0 0 2px var(–neon-b),
+0 0 0 2px var(--neon-b),
 0 0 0 3px rgba(0,212,255,0.4),
 0 0 20px rgba(0,212,255,0.5),
 inset 0 2px 8px rgba(0,0,0,0.7);
 animation: hlPulse 0.7s ease infinite alternate;
 }
 @keyframes hlPulse {
-from { box-shadow: 0 0 0 2px var(–neon-b), 0 0 0 3px rgba(0,212,255,0.4), 0 0 15px rgba(0,212,255,0.4), inset 0 2px 8px rgba(0,0,0,0.7); }
-to   { box-shadow: 0 0 0 2px var(–neon-b), 0 0 0 3px rgba(0,212,255,0.6), 0 0 35px rgba(0,212,255,0.7), 0 0 60px rgba(255,45,155,0.2), inset 0 2px 8px rgba(0,0,0,0.7); }
+from { box-shadow: 0 0 0 2px var(--neon-b), 0 0 0 3px rgba(0,212,255,0.4), 0 0 15px rgba(0,212,255,0.4), inset 0 2px 8px rgba(0,0,0,0.7); }
+to   { box-shadow: 0 0 0 2px var(--neon-b), 0 0 0 3px rgba(0,212,255,0.6), 0 0 35px rgba(0,212,255,0.7), 0 0 60px rgba(255,45,155,0.2), inset 0 2px 8px rgba(0,0,0,0.7); }
 }
 
 .ans.filled { animation: slotDrop 0.3s cubic-bezier(0.34,1.56,0.64,1); }
@@ -515,7 +515,7 @@ to   { transform: scale(1)   translateY(0);    opacity: 1; }
 
 /* 演算子 */
 .op {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(16px,4.5vw,22px);
 color: rgba(245,197,24,0.5);
 min-width: clamp(20px,4.5vw,26px);
@@ -528,8 +528,8 @@ user-select: none;
 -webkit-tap-highlight-color: transparent;
 }
 .op:active, .op:hover {
-color: var(–gold-l);
-text-shadow: 0 0 12px var(–gold), 0 0 25px rgba(245,197,24,0.5);
+color: var(--gold-l);
+text-shadow: 0 0 12px var(--gold), 0 0 25px rgba(245,197,24,0.5);
 background: rgba(245,197,24,0.1);
 }
 
@@ -538,12 +538,12 @@ background: rgba(245,197,24,0.1);
 display: flex;
 align-items: center;
 justify-content: center;
-gap: var(–sp-s);
-padding-top: var(–sp-s);
+gap: var(--sp-s);
+padding-top: var(--sp-s);
 }
-.eq { font-family: var(–f-slot); font-size: clamp(18px,5vw,24px); color: rgba(245,197,24,0.3); }
+.eq { font-family: var(--f-slot); font-size: clamp(18px,5vw,24px); color: rgba(245,197,24,0.3); }
 .res-val {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(30px,8.5vw,42px);
 color: rgba(245,197,24,0.3);
 transition: color 0.3s, text-shadow 0.3s;
@@ -557,7 +557,7 @@ text-shadow:
 0 0 80px rgba(0,255,120,0.3);
 animation: resPop 0.4s cubic-bezier(0.34,1.56,0.64,1);
 }
-.res-val.ng { color: var(–red-b); text-shadow: 0 0 12px var(–red-b); }
+.res-val.ng { color: var(--red-b); text-shadow: 0 0 12px var(--red-b); }
 @keyframes resPop {
 from { transform: scale(0.5); }
 to   { transform: scale(1); }
@@ -567,9 +567,9 @@ to   { transform: scale(1); }
 ボタンエリア
 ===================================================== */
 .btn-area {
-padding: var(–sp-s) 30px;
+padding: var(--sp-s) 30px;
 display: flex;
-gap: var(–sp-s);
+gap: var(--sp-s);
 align-items: center;
 border-top: 2px solid rgba(245,197,24,0.12);
 background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
@@ -579,14 +579,14 @@ background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%);
 flex: 1;
 border: none;
 border-radius: 50px;
-font-family: var(–f-ui);
+font-family: var(--f-ui);
 font-size: clamp(16px,4.2vw,20px);
 font-weight: 900;
 letter-spacing: 0.06em;
 cursor: pointer;
 -webkit-tap-highlight-color: transparent;
 transition: transform 0.08s, filter 0.08s;
-padding: var(–sp-s) 0;
+padding: var(--sp-s) 0;
 position: relative;
 top: 0;
 }
@@ -595,7 +595,7 @@ top: 0;
 /* 解答ボタン：金の丸ボタン */
 .btn-ans {
 background: radial-gradient(circle at 38% 32%,
-#fff7b0 0%, var(–gold) 45%, #a06800 80%, #6a4000 100%);
+#fff7b0 0%, var(--gold) 45%, #a06800 80%, #6a4000 100%);
 color: #2a0800;
 box-shadow:
 0 6px 0 #3a1a00,
@@ -612,7 +612,7 @@ box-shadow: 0 1px 0 #3a1a00, 0 3px 10px rgba(0,0,0,0.5), inset 0 2px 4px rgba(25
 /* パスボタン：赤の丸ボタン */
 .btn-pas {
 background: radial-gradient(circle at 38% 32%,
-#ff8080 0%, var(–red) 45%, #700005 80%, #3a0002 100%);
+#ff8080 0%, var(--red) 45%, #700005 80%, #3a0002 100%);
 color: #fff;
 box-shadow:
 0 6px 0 #3a0002,
@@ -644,7 +644,7 @@ box-shadow: inset 0 1px 3px rgba(0,0,0,0.4);
 ===================================================== */
 .dots {
 display: flex; justify-content: center; gap: 8px;
-padding: var(–sp-xs) 0;
+padding: var(--sp-xs) 0;
 }
 .dot {
 width: 10px; height: 10px; border-radius: 50%;
@@ -652,9 +652,9 @@ background: rgba(245,197,24,0.15);
 border: 1px solid rgba(245,197,24,0.2);
 transition: background 0.3s, box-shadow 0.3s;
 }
-.dot.done    { background: var(–gold); border-color: var(–gold); box-shadow: 0 0 6px var(–gold); }
-.dot.current { background: var(–gold-l); border-color: var(–gold-l); box-shadow: 0 0 10px var(–gold), 0 0 20px rgba(245,197,24,0.4); animation: dotPulse 1s ease infinite alternate; }
-@keyframes dotPulse { to { box-shadow: 0 0 16px var(–gold), 0 0 32px rgba(245,197,24,0.6); } }
+.dot.done    { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 6px var(--gold); }
+.dot.current { background: var(--gold-l); border-color: var(--gold-l); box-shadow: 0 0 10px var(--gold), 0 0 20px rgba(245,197,24,0.4); animation: dotPulse 1s ease infinite alternate; }
+@keyframes dotPulse { to { box-shadow: 0 0 16px var(--gold), 0 0 32px rgba(245,197,24,0.6); } }
 
 .hint {
 text-align: center;
@@ -667,7 +667,7 @@ letter-spacing: 0.06em;
 勝利フラッシュ（正解時マシン枠）
 ===================================================== */
 @keyframes winFlash {
-0%,100% { box-shadow: 0 0 0 2px var(–gold), 0 0 0 4px var(–gold-d), 0 0 0 6px var(–gold-m), 0 0 40px rgba(245,197,24,0.5), 0 0 80px rgba(180,0,0,0.3), inset 0 0 40px rgba(0,0,0,0.7); }
+0%,100% { box-shadow: 0 0 0 2px var(--gold), 0 0 0 4px var(--gold-d), 0 0 0 6px var(--gold-m), 0 0 40px rgba(245,197,24,0.5), 0 0 80px rgba(180,0,0,0.3), inset 0 0 40px rgba(0,0,0,0.7); }
 50%     { box-shadow: 0 0 0 3px #00ff80, 0 0 0 6px rgba(0,255,128,0.4), 0 0 0 9px rgba(0,255,128,0.2), 0 0 60px rgba(0,255,128,0.6), 0 0 120px rgba(0,255,128,0.3), inset 0 0 40px rgba(0,0,0,0.7); }
 }
 .machine.win { animation: winFlash 0.3s step-end 5; }
@@ -688,45 +688,45 @@ backdrop-filter: blur(2px);
 .fb {
 background: linear-gradient(155deg, #250008 0%, #0d0020 100%);
 border-radius: 18px;
-padding: var(–sp-l) var(–sp-m);
+padding: var(--sp-l) var(--sp-m);
 text-align: center;
 width: 90%; max-width: 320px;
 transform: scale(0.75) rotate(-2deg);
 transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
 /* 多重枠 */
 box-shadow:
-0 0 0 2px var(–gold),
-0 0 0 4px var(–gold-d),
+0 0 0 2px var(--gold),
+0 0 0 4px var(--gold-d),
 0 0 40px rgba(245,197,24,0.3),
 0 0 80px rgba(180,0,0,0.2),
 inset 0 1px 3px rgba(255,255,255,0.05);
 }
 .overlay.show .fb { transform: scale(1) rotate(0deg); }
 
-.fb-emoji { font-size: 56px; display: block; margin-bottom: var(–sp-s); }
+.fb-emoji { font-size: 56px; display: block; margin-bottom: var(--sp-s); }
 
 .fb-title {
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(28px,8vw,38px);
-margin-bottom: var(–sp-xs);
+margin-bottom: var(--sp-xs);
 }
 .fb-title.win {
-color: var(–gold);
+color: var(--gold);
 text-shadow: 0 0 20px rgba(245,197,24,0.8), 0 0 50px rgba(245,197,24,0.4);
 animation: titleGlow 1s ease-in-out infinite alternate;
 }
-.fb-title.lose { color: var(–red-b); text-shadow: 0 0 15px var(–red-b); }
+.fb-title.lose { color: var(--red-b); text-shadow: 0 0 15px var(--red-b); }
 
-.fb-expr { font-size: clamp(11px,3vw,13px); color: rgba(245,197,24,0.45); margin-bottom: var(–sp-s); min-height: 1.4em; }
-.fb-pts  { font-family: var(–f-slot); font-size: clamp(22px,6vw,28px); color: var(–gold); margin-bottom: var(–sp-m); text-shadow: 0 0 15px rgba(245,197,24,0.7); }
+.fb-expr { font-size: clamp(11px,3vw,13px); color: rgba(245,197,24,0.45); margin-bottom: var(--sp-s); min-height: 1.4em; }
+.fb-pts  { font-family: var(--f-slot); font-size: clamp(22px,6vw,28px); color: var(--gold); margin-bottom: var(--sp-m); text-shadow: 0 0 15px rgba(245,197,24,0.7); }
 
 .fb-next {
 width: 100%;
-padding: var(–sp-s);
+padding: var(--sp-s);
 border: none; border-radius: 50px;
-font-family: var(–f-ui); font-weight: 900;
+font-family: var(--f-ui); font-weight: 900;
 font-size: clamp(15px,4vw,18px);
-background: radial-gradient(circle at 38% 32%, #fff7b0, var(–gold), #6a4000);
+background: radial-gradient(circle at 38% 32%, #fff7b0, var(--gold), #6a4000);
 color: #2a0800;
 cursor: pointer;
 box-shadow: 0 5px 0 #3a1a00, 0 7px 16px rgba(0,0,0,0.4), 0 0 20px rgba(245,197,24,0.3);
@@ -747,30 +747,30 @@ filter: brightness(0.88);
 .gc {
 position: absolute;
 border-radius: 50%;
-background: radial-gradient(circle at 35% 30%, var(–gold-l), var(–gold), #7a5500);
+background: radial-gradient(circle at 35% 30%, var(--gold-l), var(--gold), #7a5500);
 border: 2px solid rgba(255,255,255,0.35);
 box-shadow: 0 0 6px rgba(245,197,24,0.6);
-animation: gcFly var(–d) ease-out var(–dl) forwards;
+animation: gcFly var(--d) ease-out var(--dl) forwards;
 opacity: 0;
 }
 @keyframes gcFly {
 0%   { transform: translate(0,0) rotate(0deg) scale(1);   opacity: 1; }
 15%  { opacity: 1; }
 80%  { opacity: 0.7; }
-100% { transform: translate(var(–tx), var(–ty)) rotate(var(–rot)) scale(0.15); opacity: 0; }
+100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.15); opacity: 0; }
 }
 
 /* 紙吹雪 */
 .confetti {
 position: absolute;
 width: 8px; height: 12px;
-animation: confettiFall var(–d) ease-in var(–dl) forwards;
+animation: confettiFall var(--d) ease-in var(--dl) forwards;
 opacity: 0;
 border-radius: 2px;
 }
 @keyframes confettiFall {
 0%   { transform: translate(0,0) rotate(0deg);  opacity: 1; }
-100% { transform: translate(var(–tx), var(–ty)) rotate(var(–rot)); opacity: 0; }
+100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)); opacity: 0; }
 }
 
 /* =====================================================
@@ -838,16 +838,16 @@ pointer-events: none;
 .levelup {
 position: fixed; top: 50%; left: 50%;
 transform: translate(-50%,-50%) scale(0) rotate(-8deg);
-font-family: var(–f-slot);
+font-family: var(--f-slot);
 font-size: clamp(22px,6.5vw,30px);
 color: #1a0800;
-background: linear-gradient(135deg, var(–gold-l), var(–gold), var(–gold-m));
-padding: var(–sp-s) var(–sp-l);
+background: linear-gradient(135deg, var(--gold-l), var(--gold), var(--gold-m));
+padding: var(--sp-s) var(--sp-l);
 border-radius: 50px;
 z-index: 400; pointer-events: none;
 white-space: nowrap;
 box-shadow:
-0 0 0 3px var(–gold-d),
+0 0 0 3px var(--gold-d),
 0 0 50px rgba(245,197,24,0.9),
 0 0 100px rgba(245,197,24,0.5);
 opacity: 0;
