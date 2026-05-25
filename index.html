@@ -44,7 +44,6 @@ overflow-x: hidden;
 /* =====================================================
 背景レイヤー
 ===================================================== */
-/* 放射炎 */
 .bg-glow {
 position: fixed; inset: 0; z-index: 0; pointer-events: none;
 background:
@@ -53,14 +52,12 @@ radial-gradient(ellipse 60% 40% at 10% 60%,  rgba(0,180,255,0.12) 0%, transparen
 radial-gradient(ellipse 60% 40% at 90% 70%,  rgba(255,30,120,0.10) 0%, transparent 60%),
 radial-gradient(ellipse 100% 30% at 50% 100%,rgba(200,140,0,0.15) 0%, transparent 60%);
 }
-/* グリッド */
 .bg-grid {
 position: fixed; inset: 0; z-index: 0; pointer-events: none;
 background:
 repeating-linear-gradient(0deg,  transparent, transparent 39px, rgba(255,255,255,0.03) 40px),
 repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,255,255,0.03) 40px);
 }
-/* パーティクル（星） */
 .bg-stars {
 position: fixed; inset: 0; z-index: 0; pointer-events: none;
 overflow: hidden;
@@ -104,7 +101,6 @@ box-shadow:
 inset 0 2px 4px rgba(255,255,255,0.05);
 }
 
-/* 電球ボーダー */
 .bulb-row {
 display: flex;
 justify-content: space-around;
@@ -138,7 +134,6 @@ text-align: center;
 letter-spacing: 0.06em;
 line-height: 1;
 color: var(--gold);
-/* 3D押し出し */
 text-shadow:
 0  1px 0 #aa7700,
 0  2px 0 #996600,
@@ -146,7 +141,6 @@ text-shadow:
 0  4px 0 #774400,
 0  5px 0 #663300,
 0  6px 8px rgba(0,0,0,0.6),
-/* 発光 */
 0  0  10px rgba(255,220,50,0.8),
 0  0  30px rgba(255,180,0,0.5),
 0  0  60px rgba(255,140,0,0.3);
@@ -201,7 +195,6 @@ position: relative;
 background: linear-gradient(160deg, #2a0005 0%, #180002 50%, #0d0001 100%);
 border-radius: 14px;
 overflow: hidden;
-/* 外枠：多重ボーダー */
 box-shadow:
 0 0 0 2px var(--gold),
 0 0 0 4px var(--gold-d),
@@ -211,7 +204,6 @@ box-shadow:
 inset 0 0 40px rgba(0,0,0,0.7);
 }
 
-/* ライトニング装飾（左右） */
 .lightning {
 position: absolute;
 top: 0; bottom: 0;
@@ -253,7 +245,6 @@ background: linear-gradient(180deg, #3a0010 0%, #1e0008 100%);
 border-bottom: 3px solid var(--gold-d);
 }
 
-/* 上部コイン装飾 */
 .coin-deco {
 display: flex;
 justify-content: center;
@@ -271,7 +262,7 @@ animation: coinBob 1.5s ease-in-out infinite alternate;
 position: relative;
 }
 .deco-coin::after {
-content: ‘✦’;
+content: '✦';
 position: absolute; inset: 0;
 display: flex; align-items: center; justify-content: center;
 font-size: 8px; color: rgba(255,255,255,0.4);
@@ -284,14 +275,15 @@ from { transform: translateY(0) rotate(-5deg); }
 to   { transform: translateY(-4px) rotate(5deg); }
 }
 
-/* リール群 */
 .reels {
 display: flex;
 justify-content: center;
 gap: var(--sp-s);
 }
 
-/* スロットリール */
+/* =====================================================
+  スロットリール
+===================================================== */
 .reel {
 position: relative;
 width: clamp(70px,18vw,88px);
@@ -300,7 +292,6 @@ border-radius: 10px;
 overflow: hidden;
 cursor: pointer;
 -webkit-tap-highlight-color: transparent;
-/* リール筐体 */
 box-shadow:
 0 0 0 2px var(--gold),
 0 0 0 4px var(--gold-d),
@@ -311,7 +302,31 @@ inset 0 -4px 12px rgba(0,0,0,0.2),
 transition: box-shadow 0.15s;
 }
 
-/* リール白帯 */
+/* ストリップ（スピン中に流れる数字の列）*/
+.reel-strip {
+position: absolute;
+inset: 0;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: flex-start;
+will-change: transform;
+}
+.reel-strip-num {
+font-family: var(--f-slot);
+font-size: clamp(40px,11vw,54px);
+color: #111;
+line-height: 1;
+height: clamp(84px,22vw,104px);   /* リール1コマ分 */
+display: flex;
+align-items: center;
+justify-content: center;
+width: 100%;
+flex-shrink: 0;
+user-select: none;
+}
+
+/* リール白帯（stripの背景として使用） */
 .reel-track {
 position: absolute; inset: 0;
 background: linear-gradient(180deg,
@@ -323,19 +338,19 @@ border-radius: 8px;
 /* 上下影マスク */
 .reel-track::before,
 .reel-track::after {
-content: ‘’;
+content: '';
 position: absolute; left: 0; right: 0;
 height: 32%;
-z-index: 2; pointer-events: none;
+z-index: 4; pointer-events: none;
 }
 .reel-track::before {
 top: 0;
-background: linear-gradient(180deg, rgba(0,0,0,0.28) 0%, transparent 100%);
+background: linear-gradient(180deg, rgba(0,0,0,0.30) 0%, transparent 100%);
 border-radius: 8px 8px 0 0;
 }
 .reel-track::after {
 bottom: 0;
-background: linear-gradient(0deg, rgba(0,0,0,0.28) 0%, transparent 100%);
+background: linear-gradient(0deg, rgba(0,0,0,0.30) 0%, transparent 100%);
 border-radius: 0 0 8px 8px;
 }
 
@@ -346,11 +361,13 @@ font-size: clamp(7px,1.8vw,9px);
 font-family: var(--f-slot);
 letter-spacing: 0.05em;
 color: rgba(0,0,0,0.25);
-z-index: 1;
+z-index: 3;
+pointer-events: none;
 }
 .reel-sub.top    { top: 8px; }
 .reel-sub.bottom { bottom: 8px; }
 
+/* メイン数字（非スピン時） */
 .reel-num {
 font-family: var(--f-slot);
 font-size: clamp(40px,11vw,54px);
@@ -364,7 +381,7 @@ transition: transform 0.1s;
 
 /* 中央ラインハイライト */
 .reel::before {
-content: ‘’;
+content: '';
 position: absolute;
 left: 0; right: 0;
 top: 50%;
@@ -375,8 +392,7 @@ z-index: 5;
 pointer-events: none;
 }
 
-/* ホバー・状態 */
-.reel:hover:not(.used) {
+.reel:hover:not(.used):not(.spinning-active) {
 box-shadow:
 0 0 0 2px var(--neon-b),
 0 0 0 4px rgba(0,212,255,0.3),
@@ -404,15 +420,35 @@ cursor: not-allowed;
 box-shadow: 0 0 0 2px rgba(245,197,24,0.2), 0 0 0 3px rgba(245,197,24,0.1), inset 0 4px 12px rgba(0,0,0,0.5);
 }
 
-/* スピンアニメ */
-@keyframes reelSpin {
-0%   { transform: translateY(-150%) scaleY(1.2); opacity: 0; }
-50%  { transform: translateY(6%); scaleY:(0.95); opacity: 1; }
-70%  { transform: translateY(-3%); }
-85%  { transform: translateY(2%); }
-100% { transform: translateY(0%) scaleY(1); opacity: 1; }
+/* スピン中はクリック無効 */
+.reel.spinning-active {
+pointer-events: none;
 }
-.reel.spinning .reel-num { animation: reelSpin 0.5s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+/* =====================================================
+  スピンアニメーション（JSで動的に制御）
+===================================================== */
+
+/* ランダムな数字が流れるストリップのスクロール */
+@keyframes stripScroll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(var(--scroll-dist)); }
+}
+
+/* 止まるとき：バウンス着地 */
+@keyframes reelLand {
+  0%   { transform: translateY(-8px); }
+  40%  { transform: translateY(4px); }
+  70%  { transform: translateY(-2px); }
+  100% { transform: translateY(0); }
+}
+
+/* 止まった瞬間の光るフラッシュ */
+@keyframes reelFlash {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.6; }
+  100% { opacity: 1; }
+}
 
 /* ▶ 矢印 */
 .reel-arrows {
@@ -449,7 +485,6 @@ justify-content: center;
 gap: var(--sp-xs);
 }
 
-/* 答えスロット（ジュエル枠） */
 .ans {
 position: relative;
 width: clamp(54px,13.5vw,68px);
@@ -459,7 +494,6 @@ background: #05000f;
 display: flex; align-items: center; justify-content: center;
 cursor: pointer;
 -webkit-tap-highlight-color: transparent;
-/* 宝石枠ボーダー */
 box-shadow:
 0 0 0 1px var(--gold-d),
 0 0 0 2px var(--gold-m),
@@ -469,9 +503,8 @@ inset 0 -1px 3px rgba(245,197,24,0.1);
 transition: box-shadow 0.15s;
 }
 
-/* コーナー宝石 */
 .ans::before {
-content: ‘’;
+content: '';
 position: absolute; inset: 3px;
 border-radius: 5px;
 background: linear-gradient(135deg,
@@ -513,7 +546,6 @@ from { transform: scale(0.5) translateY(-15px); opacity: 0.3; }
 to   { transform: scale(1)   translateY(0);    opacity: 1; }
 }
 
-/* 演算子 */
 .op {
 font-family: var(--f-slot);
 font-size: clamp(16px,4.5vw,22px);
@@ -533,7 +565,6 @@ text-shadow: 0 0 12px var(--gold), 0 0 25px rgba(245,197,24,0.5);
 background: rgba(245,197,24,0.1);
 }
 
-/* 結果行 */
 .result-row {
 display: flex;
 align-items: center;
@@ -574,7 +605,6 @@ display: flex;
 gap: var(--sp-s);
 align-items: center;
 border-top: 2px solid rgba(245,197,24,0.12);
-/* background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.3) 100%); */
 }
 
 .btn {
@@ -594,7 +624,6 @@ top: 0;
 }
 .btn:active { filter: brightness(0.85); }
 
-/* 解答ボタン：金の丸ボタン */
 .btn-ans {
 background: radial-gradient(circle at 38% 32%,
 #fff7b0 0%, var(--gold) 45%, #a06800 80%, #6a4000 100%);
@@ -611,7 +640,6 @@ top: 5px;
 box-shadow: 0 1px 0 #3a1a00, 0 3px 10px rgba(0,0,0,0.5), inset 0 2px 4px rgba(255,255,255,0.3);
 }
 
-/* パスボタン：赤の丸ボタン */
 .btn-pas {
 background: radial-gradient(circle at 38% 32%,
 #ff8080 0%, var(--red) 45%, #700005 80%, #3a0002 100%);
@@ -670,7 +698,7 @@ letter-spacing: 0.06em;
 }
 
 /* =====================================================
-勝利フラッシュ（正解時マシン枠）
+勝利フラッシュ
 ===================================================== */
 @keyframes winFlash {
 0%,100% { box-shadow: 0 0 0 2px var(--gold), 0 0 0 4px var(--gold-d), 0 0 0 6px var(--gold-m), 0 0 40px rgba(245,197,24,0.5), 0 0 80px rgba(180,0,0,0.3), inset 0 0 40px rgba(0,0,0,0.7); }
@@ -699,7 +727,6 @@ text-align: center;
 width: 90%; max-width: 320px;
 transform: scale(0.75) rotate(-2deg);
 transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
-/* 多重枠 */
 box-shadow:
 0 0 0 2px var(--gold),
 0 0 0 4px var(--gold-d),
@@ -766,7 +793,6 @@ opacity: 0;
 100% { transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.15); opacity: 0; }
 }
 
-/* 紙吹雪 */
 .confetti {
 position: absolute;
 width: 8px; height: 12px;
@@ -785,7 +811,6 @@ border-radius: 2px;
 .coin-mountain-wrap {
 position: relative;
 width: 100%;
-/* 画像の縦横比（1165×975）に合わせて下部だけ見せる高さ */
 height: clamp(120px, 28vw, 160px);
 margin-top: -170px;
 pointer-events: none;
@@ -797,12 +822,10 @@ position: absolute;
 bottom: 0;
 left: 50%;
 transform: translateX(-50%);
-width: 100%; /* 左右にはみ出させてボリューム感を出す */
+width: 100%;
 max-width: 600px;
-/* 下部（コイン山）だけ見せる */
 object-fit: cover;
 object-position: bottom center;
-/* 上端をフェードアウトしてmachineと自然に繋ぐ */
 -webkit-mask-image: linear-gradient(
 to bottom,
 transparent 0%,
@@ -817,7 +840,6 @@ rgba(0,0,0,0.3) 20%,
 rgba(0,0,0,0.8) 45%,
 black 65%
 );
-/* 飛び散りコインをうっすら浮かせるアニメ */
 animation: coinImgFloat 4s ease-in-out infinite alternate;
 }
 
@@ -826,9 +848,8 @@ from { transform: translateX(-50%) translateY(0px); }
 to   { transform: translateX(-50%) translateY(-4px); }
 }
 
-/* 底面グロー：コイン山の下から金色の光を足す */
 .coin-mountain-wrap::after {
-content: ‘’;
+content: '';
 position: absolute;
 bottom: 0; left: 0; right: 0;
 height: 40%;
@@ -868,14 +889,11 @@ opacity: 1;
 </head>
 <body>
 
-<!-- 背景 -->
-
 <div class="bg-glow"></div>
 <div class="bg-grid"></div>
 <div class="bg-stars" id="bgStars"></div>
 
 <div class="wrap">
-  <!-- タイトル看板 -->
   <div class="sign-outer">
     <div class="bulb-row" id="bulbRow"></div>
     <div class="sign-inner">
@@ -884,8 +902,6 @@ opacity: 1;
     <div class="bulb-row" id="bulbRow2"></div>
   </div>
 
-  <!-- ステータス -->
-
   <div class="status">
     <div class="stat"><div class="stat-label">LEVEL</div><div class="stat-val" id="lvD">1</div></div>
     <div class="stat"><div class="stat-label">SCORE</div><div class="stat-val" id="scD">0</div></div>
@@ -893,63 +909,45 @@ opacity: 1;
     <div class="stat"><div class="stat-label">TIME</div> <div class="stat-val" id="tmD">60</div></div>
   </div>
 
-  <!-- スロット本体 -->
-
   <div class="machine" id="machine">
-    <!-- ライトニング -->
     <div class="lightning left"  id="boltL"></div>
     <div class="lightning right" id="boltR"></div>
 
-```
-<!-- リール -->
-<div class="reel-section">
-  <!-- コイン装飾 -->
-  <div class="coin-deco" id="coinDeco"></div>
-  <!-- リール群 -->
-  <div class="reels" id="reels"></div>
-  <!-- ▶矢印 -->
-  <div class="reel-arrows">
-    <span class="arr">▶</span>
-    <span class="arr">▶</span>
-    <span class="arr">▶</span>
-    <span class="arr right">▶</span>
-    <span class="arr right">▶</span>
-    <span class="arr right">▶</span>
+    <div class="reel-section">
+      <div class="coin-deco" id="coinDeco"></div>
+      <div class="reels" id="reels"></div>
+      <div class="reel-arrows">
+        <span class="arr">▶</span>
+        <span class="arr">▶</span>
+        <span class="arr">▶</span>
+        <span class="arr right">▶</span>
+        <span class="arr right">▶</span>
+        <span class="arr right">▶</span>
+      </div>
+    </div>
+
+    <div class="answer-section">
+      <div class="formula-row" id="formulaRow"></div>
+      <div class="result-row">
+        <span class="eq">＝</span>
+        <span class="res-val" id="resVal">?</span>
+      </div>
+    </div>
+
+    <div class="btn-area">
+      <button class="btn btn-rst" id="btnRst">↺</button>
+      <button class="btn btn-ans" id="btnAns">解答</button>
+      <button class="btn btn-pas" id="btnPas">パス</button>
+    </div>
   </div>
-</div>
-
-<!-- 答えエリア -->
-<div class="answer-section">
-  <div class="formula-row" id="formulaRow"></div>
-  <div class="result-row">
-    <span class="eq">＝</span>
-    <span class="res-val" id="resVal">?</span>
-  </div>
-</div>
-
-<!-- ボタン -->
-<div class="btn-area">
-  <button class="btn btn-rst" id="btnRst">↺</button>
-  <button class="btn btn-ans" id="btnAns">解答</button>
-  <button class="btn btn-pas" id="btnPas">パス</button>
-</div>
-```
-
-  </div>
-
-  <!-- コイン山 -->
 
   <div class="coin-mountain-wrap">
     <img class="coin-mountain-img" src="coins.png" alt="コイン山">
   </div>
 
-  <!-- 進捗 -->
-
   <div class="dots" id="dots"></div>
   <div class="hint">数字をタップして配置 ／ 演算子をタップで切替</div>
 </div>
-
-<!-- オーバーレイ -->
 
 <div class="overlay" id="overlay">
   <div class="fb">
@@ -961,12 +959,7 @@ opacity: 1;
   </div>
 </div>
 
-<!-- コインレイヤー -->
-
 <div class="coin-layer" id="coinLayer"></div>
-
-<!-- レベルアップ -->
-
 <div class="levelup" id="lvBadge">⬆ LEVEL UP!</div>
 
 <script>
@@ -1022,6 +1015,7 @@ let G = {
   nums:[], slotN:[null,null,null,null], slotS:[null,null,null,null],
   ops:['+','+','+'], sel:null,
   time:60, tid:null,
+  spinning: false,   // スピン中フラグ（操作ロック用）
 };
 
 /* ==============================
@@ -1049,7 +1043,6 @@ const $lvBadge = document.getElementById('lvBadge');
    背景パーティクル生成
 ============================== */
 (function initBg() {
-  // 電球
   const makeBulbs = id => {
     const el = document.getElementById(id);
     for (let i=0;i<26;i++) {
@@ -1060,7 +1053,6 @@ const $lvBadge = document.getElementById('lvBadge');
   };
   makeBulbs('bulbRow'); makeBulbs('bulbRow2');
 
-  // ライトニング
   ['boltL','boltR'].forEach(id=>{
     const el = document.getElementById(id);
     ['⚡','⚡','⚡','⚡','⚡'].forEach(()=>{
@@ -1070,7 +1062,6 @@ const $lvBadge = document.getElementById('lvBadge');
     });
   });
 
-  // コイン装飾
   const dc = document.getElementById('coinDeco');
   for (let i=0;i<6;i++) {
     const c = document.createElement('div');
@@ -1078,7 +1069,6 @@ const $lvBadge = document.getElementById('lvBadge');
     dc.appendChild(c);
   }
 
-  // 背景星
   const bs = document.getElementById('bgStars');
   for (let i=0;i<40;i++) {
     const s = document.createElement('div');
@@ -1113,8 +1103,9 @@ function newProblem() {
   G.sel   = null;
   G.time  = cfg.time;
   render();
-  startTimer();
-  spinAll();
+  spinAll(() => {
+    startTimer();
+  });
 }
 
 /* ==============================
@@ -1143,17 +1134,22 @@ function renderReels() {
     if (G.slotS.includes(i)) reel.classList.add('used');
     if (G.sel===i) reel.classList.add('selected');
 
+    // 白いトラック背景
     const track = document.createElement('div');
     track.className = 'reel-track';
 
+    // BARラベル（上）
     const sub1 = document.createElement('div');
     sub1.className = 'reel-sub top';
     sub1.textContent = 'BAR';
 
+    // メイン数字
     const num = document.createElement('div');
     num.className = 'reel-num';
+    num.id = `reel-num-${i}`;
     num.textContent = n;
 
+    // BARラベル（下）
     const sub2 = document.createElement('div');
     sub2.className = 'reel-sub bottom';
     sub2.textContent = 'BAR';
@@ -1216,17 +1212,112 @@ function renderDots() {
 }
 
 /* ==============================
-   スロットスピン演出
+   スロットスピン演出（全リール順番に）
 ============================== */
-function spinAll() {
+
+/**
+ * spinAll(onDone)
+ * 4つのリールを左から順番にスロット風に回して止める
+ * 全部止まったら onDone() を呼ぶ
+ */
+function spinAll(onDone) {
+  G.spinning = true;
+
   const reelEls = $reels.querySelectorAll('.reel');
-  reelEls.forEach((r,i)=>{
-    setTimeout(()=>{
-      r.classList.remove('spinning');
-      void r.offsetWidth;
-      r.classList.add('spinning');
-      setTimeout(()=>r.classList.remove('spinning'), 550);
-    }, i*100);
+  const reelH = reelEls[0].offsetHeight;  // 1コマの高さ
+  const SPIN_NUMS = [1,2,3,4,5,6,7,8,9];  // スピン中に流す数字候補
+
+  // 各リールのスピン開始タイミング（ずらす）
+  const START_DELAYS  = [0, 120, 240, 360]; // ms
+  // 各リールが何コマ分回るか（多いほど長く回る）
+  const SPIN_FRAMES   = [14, 17, 20, 23];
+  // 各リールの回転速度（ms/フレーム）
+  const FRAME_SPEED   = 55;                 // 速い
+  const SLOW_FRAMES   = 5;                  // 終盤スロー
+  const SLOW_SPEED    = 110;                // スローフレーム速度
+
+  let doneCount = 0;
+
+  reelEls.forEach((reelEl, idx) => {
+    const finalNum = G.nums[idx];
+    const numEl    = reelEl.querySelector('.reel-num');
+
+    setTimeout(() => {
+      // スピン中クラス付与 → クリック無効
+      reelEl.classList.add('spinning-active');
+
+      let frame = 0;
+      const totalFast = SPIN_FRAMES[idx];
+      const totalFrames = totalFast + SLOW_FRAMES;
+
+      // 数字をぱらぱら変える
+      function nextFrame() {
+        frame++;
+
+        // スロー段階かどうか
+        const isSlow   = frame > totalFast;
+        const isLast   = frame === totalFrames;
+        const speed    = isSlow ? SLOW_SPEED : FRAME_SPEED;
+
+        if (isLast) {
+          // ─── 最終フレーム：本当の数字を表示してバウンス ───
+          numEl.textContent = finalNum;
+          numEl.style.transform = '';
+
+          // バウンス
+          numEl.animate([
+            { transform: 'translateY(-10px)', offset: 0 },
+            { transform: 'translateY(5px)',   offset: 0.45 },
+            { transform: 'translateY(-3px)',  offset: 0.7 },
+            { transform: 'translateY(1px)',   offset: 0.88 },
+            { transform: 'translateY(0)',     offset: 1 },
+          ], { duration: 300, easing: 'ease-out', fill: 'forwards' });
+
+          // リールのフラッシュ（枠を一瞬光らせる）
+          reelEl.classList.remove('spinning-active');
+          reelEl.style.transition = 'box-shadow 0.05s';
+          reelEl.style.boxShadow = `
+            0 0 0 2px var(--neon-y),
+            0 0 0 4px rgba(255,238,0,0.5),
+            0 0 30px rgba(255,238,0,0.8),
+            inset 0 4px 12px rgba(0,0,0,0.3)
+          `;
+          setTimeout(() => {
+            reelEl.style.boxShadow = '';
+            reelEl.style.transition = '';
+          }, 220);
+
+          // 完了カウント
+          doneCount++;
+          if (doneCount === reelEls.length) {
+            G.spinning = false;
+            if (onDone) onDone();
+          }
+        } else {
+          // ─── 途中フレーム：ランダム数字をスライドで流す ───
+          const nextNum = SPIN_NUMS[Math.floor(Math.random() * SPIN_NUMS.length)];
+
+          // 今の数字を上に飛ばしながら次の数字を下から入れる
+          numEl.animate([
+            { transform: 'translateY(0)',      opacity: 1 },
+            { transform: `translateY(${-reelH * 0.6}px)`, opacity: 0 },
+          ], { duration: speed * 0.45, easing: 'ease-in', fill: 'forwards' })
+            .finished.then(() => {
+              numEl.textContent = nextNum;
+              numEl.animate([
+                { transform: `translateY(${reelH * 0.6}px)`, opacity: 0 },
+                { transform: 'translateY(0)',      opacity: 1 },
+              ], { duration: speed * 0.55, easing: 'ease-out', fill: 'forwards' });
+            });
+
+          setTimeout(nextFrame, speed);
+        }
+      }
+
+      // 最初の一コマをすぐ始める
+      nextFrame();
+
+    }, START_DELAYS[idx]);
   });
 }
 
@@ -1234,6 +1325,7 @@ function spinAll() {
    インタラクション
 ============================== */
 function onNumTap(i) {
+  if (G.spinning) return;   // スピン中は無視
   const us = G.slotS.indexOf(i);
   if (us!==-1) {
     G.slotN[us]=null; G.slotS[us]=null;
@@ -1247,6 +1339,7 @@ function onNumTap(i) {
 }
 
 function onSlotTap(si) {
+  if (G.spinning) return;
   if (G.slotN[si]!==null) {
     G.slotS[si]=null; G.slotN[si]=null;
     G.sel=null; render(); return;
@@ -1261,6 +1354,7 @@ function placeSlot(si, ni) {
 }
 
 function onOpTap(i) {
+  if (G.spinning) return;
   G.ops[i] = OPS[(OPS.indexOf(G.ops[i])+1)%OPS.length];
   renderFormula(); updateResult();
 }
@@ -1269,15 +1363,21 @@ function onOpTap(i) {
    解答・パス
 ============================== */
 document.getElementById('btnAns').addEventListener('click',()=>{
+  if (G.spinning) return;
   if (G.slotN.some(v=>v===null)) { flash('マスを埋めてください'); return; }
   const v = evalExpr(G.slotN, G.ops);
   if (v!==null && Math.abs(v-10)<1e-9) correct();
   else flash('もう一度！');
 });
-document.getElementById('btnPas').addEventListener('click',()=>{ stopTimer(); showFb(false,'PASS',null); });
+document.getElementById('btnPas').addEventListener('click',()=>{
+  if (G.spinning) return;
+  stopTimer(); showFb(false,'PASS',null);
+});
 document.getElementById('btnRst').addEventListener('click',()=>{
+  if (G.spinning) return;
   G.slotN=[null,null,null,null]; G.slotS=[null,null,null,null]; G.sel=null;
-  render(); spinAll();
+  render();
+  spinAll(null);
 });
 
 function flash(msg) {
@@ -1292,7 +1392,6 @@ function correct() {
   const pts = cfg.base+bonus;
   G.score+=pts;
   if (G.score>G.hi) { G.hi=G.score; localStorage.setItem('t10g_hi',G.hi); }
-  // 勝利エフェクト
   $mach.classList.remove('win');
   void $mach.offsetWidth;
   $mach.classList.add('win');
@@ -1346,7 +1445,6 @@ function burst() {
   const cx = window.innerWidth/2;
   const cy = window.innerHeight*0.45;
 
-  // コイン
   for (let i=0;i<24;i++) {
     const c = document.createElement('div');
     c.className = 'gc';
@@ -1366,7 +1464,6 @@ function burst() {
     setTimeout(()=>c.remove(), 1500);
   }
 
-  // 紙吹雪
   for (let i=0;i<30;i++) {
     const f = document.createElement('div');
     f.className = 'confetti';
