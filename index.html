@@ -82,6 +82,7 @@ width: min(480px, 100%);
 padding: var(--sp-xs) var(--sp-s) var(--sp-l);
 display: flex;
 flex-direction: column;
+justify-content: center;
 gap: var(--sp-s);
 min-height: 100svh;
 }
@@ -942,13 +943,14 @@ opacity: 1;
     </div>
   </div>
 
+  <div class="dots" id="dots"></div>
+  <div class="hint">数字をタップして配置 ／ 演算子をタップで切替</div>
+
   <div class="coin-mountain-wrap">
     <img class="coin-mountain-img" src="coins.png" alt="コイン山">
   </div>
-
-  <div class="dots" id="dots"></div>
-  <div class="hint">数字をタップして配置 ／ 演算子をタップで切替</div>
 </div>
+
 
 <div class="overlay" id="overlay">
   <div class="fb">
